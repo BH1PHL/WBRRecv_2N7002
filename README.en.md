@@ -1,4 +1,12 @@
+---
+title: A Wheatstone bridge regenerative (WBR) receiver with 2N7002
+author: BH1PHL
+---
+
+
+
 # A Wheatstone bridge regenerative (WBR) receiver with 2N7002
+
 ## Basic principles
 The circuit is based on the N1BYT's WBR receiver, as shown in the schematic below. Q1 is the core of a Colpitts oscillator circuit, and RV2 and RV5 adjust whether the circuit oscillates (i.e., regeneration strength). L2, C7, C8, and six diodes D1 to D6 form the oscillation tank circuit. The input signal is attenuated by RV1, and then fed into the middle tap of L2 with L1. The DC path of the variable capacitance diode anode is provided by L1.
 
