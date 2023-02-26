@@ -23,14 +23,17 @@ The DC potential at the balanced state of the bridge is provided by the grounded
 For the external signal on the base, Q1 operates in an amplification state with positive feedback, which is the same as a typical regenerative receiver. Under the effect of positive feedback, the sensitivity and selectivity of the receiver will be greatly improved. When operating near the critical point of oscillation, the sensitivity and selectivity of the receiver are at their best. If Q1 operates in the state of just starting oscillation, it can also serve as a beat frequency oscillator (BFO) for receiving CW and SSB signals.
 
 ## Project
-Designed with KiCad 6.0. A four-layer board  with dimensions of 100mm x 50mm is used. The assembled PCB is shown in the following picture.
+Designed with KiCad 6.0. A four-layer board with dimensions of 100mm×50mm is used. The assembled PCB is shown in the following picture.
 
 ![输入图片描述](README_md_files/WBRRecv_assembled_20220207234335.jpg?v=1&type=image&token=V1:rNLiDB9C653gRgXYAHLVgq2XeSW-X2egEXg-FWUL834)
 
+Project files can be downloaded [here](WBRRecv_2N7002_20230227.7z). git repository is at https://github.com/BH1PHL/WBRRecv_2N7002.
+
 ## Components 
+
 * Fixed resistors are 0805 1% surface mount type.
 * F1 is an 0805 0.2A self-recovery fuse (voltage rating of 24V or higher). FB1 is an 0805 ferrite bead (1kΩ@100MHz). The values of these two components are not critical.
-* Diodes D1 to D7 are [ES1JL](https://www.lcsc.com/product-detail/Diodes-Fast-Recovery-Rectifiers_Shandong-Jingdao-Microelectronics-ES1JL_C128698.html) fast recovery diodes from Shandong Jingdao Microelectronics, but other types and brands can be tried. Note that rectifier diodes are used instead of variable capacitance diodes for D1 to D6, and the reverse capacitance characteristics of rectifier diodes of different types and brands may not be the same, and the number of parallel connections needs to be determined through experimentation.
+* Diodes D1 to D7 are [ES1JL](https://www.lcsc.com/product-detail/Diodes-Fast-Recovery-Rectifiers_Shandong-Jingdao-Microelectronics-ES1JL_C128698.html) fast recovery diodes (Shandong Jingdao Microelectronics) , but other types and brands can be tried. Note that rectifier diodes are used instead of variable capacitance diodes for D1 to D6, and the reverse capacitance characteristics of rectifier diodes of different types and brands may not be the same, and the number of parallel connections needs to be determined through experimentation.
 * Transistors Q1 and Q3 are MMBT3904 (SOT-23 package).
 * Transistor Q2 is [WST2N7002](https://www.lcsc.com/product-detail/MOSFETs_Winsok-Semicon-WST2N7002_C86936.html) (WINSOK), other manufacturers' 2N7002 products can also be tried.
 * Fixed capacitors are all multi-layer ceramic capacitors (MLCC), 10uF capacitors use 1206 package, and the remaining capacitors use 0805 package. NP0(C0G) capacitors are used for less than or equal to 1nF, and X7R/X5R capacitors for greater than 1nF. When selecting capacitors, pay attention to the voltage rating (using a voltage rating of 25V or higher is safe).
@@ -38,8 +41,8 @@ Designed with KiCad 6.0. A four-layer board  with dimensions of 100mm x 50mm is 
 * RV1, RV2, RV4 are 1-gang potentiometers with the same package as ALPS RK097; RV3 is a multi-turn potentiometer (such as BOURNS 3590S-2), which is led out by a 2.54mm pin header. RV5 is a PCB mount trimmer potentiometer with the same package as BOURNS 3362P.
 * U1 is a SOT-223 package adjustable 1117 linear regulator supporting ceramic capacitors, such as AZ1117, SPX1117, AP1117, etc. Note that if the original LM1117 or the most common AMS1117 is used, C26 may need to be a tantalum capacitor.
 * U2 is LM386 or any compatible product.
-* J1 is a edge mount SMA jack, J2 is a [5-pin 3.5mm headphone socket](https://www.lcsc.com/product-detail/Audio-Connectors_XKB-Connectivity-PJ-3135-B_C319112.html), J3 is a 3.5mm pitch terminal block ([plug](https://www.lcsc.com/product-detail/Pluggable-System-Terminal-Block_DIBO-DB2EK-3-5-2P-GN-S_C395828.html and [socket](https://www.lcsc.com/product-detail/Pluggable-System-Terminal-Block_DIBO-DB2ERC-3-5-2P-GN_C395830.html), and J4 is a 2.54mm pin header with a shunt cap.
-* L1 is two turns of bifilar winding on a ferrite ring with $\mu_\mathrm{i}=300$ and OD*ID*h=12.7mm*7.9mm*6.4mm, .
+* J1 is a edge mount SMA jack, J2 is a [5-pin 3.5mm headphone socket](https://www.lcsc.com/product-detail/Audio-Connectors_XKB-Connectivity-PJ-3135-B_C319112.html), J3 is a 3.5mm pitch terminal block ([plug](https://www.lcsc.com/product-detail/Pluggable-System-Terminal-Block_DIBO-DB2EK-3-5-2P-GN-S_C395828.html) and [socket](https://www.lcsc.com/product-detail/Pluggable-System-Terminal-Block_DIBO-DB2ERC-3-5-2P-GN_C395830.html), and J4 is a 2.54mm pin header with a shunt cap.
+* L1 is two turns of bifilar winding on a ferrite ring with $\mu_\mathrm{i}=300$ and OD×ID×h=12.7mm×7.9mm×6.4mm, .
 * L2 uses a T50-6 iron powder core. The number of turns (bifilar winding), C7, and J4 for different bands are shown in the table below:
 
 |Band|L2 (T50-6)|C7|J4|frequency range (approx.)|
@@ -67,7 +70,14 @@ Notes:
 
 ## Usage
 * Connect the antenna, power supply, headphones or speaker. The power supply voltage should be above 10.5V, and the high voltage limit is determined by the maximum ratings of the components used, such as the 1117 voltage regulator, input fuse, filtering capacitor, etc. **Pay attention to the polarity of the power supply!**
+
 * Adjust the ANT and VOLUME potentiometers to the middle position. Adjust the REGEN potentiometer to the point just before oscillation (when the background noise suddenly increases). Adjust the VOLUME potentiometer to a comfortable volume. Note: it is normal to have broadcast interference when there is no oscillation. If there is still broadcast interference after oscillation, adjust the ANT potentiometer to the left to increase the input attenuation; if there is no broadcast interference whether there is oscillation or not, it indicates that there is no strong interference broadcast radio station nearby, and the ANT potentiometer can be adjusted to the right to reduce the input attenuation.
+
 * Adjust the TUNE potentiometer to change receving frequency. Generally, the REGEN potentiometer needs to be adjusted at the same time to make the regeneration work near the oscillation point for the best effect. Note that as the tuning frequency increases, the regeneration will become stronger. If you want to keep the regeneration strength unchanged, you should adjust the REGEN potentiometer to the left appropriately, and vice versa.
+
 * When receiving CW/SSB stations, the regeneration should be adjusted to the point **just after oscillation** (with the REGEN potentiometer slightly to the right of the oscillation point) for the best effect. When receiving AM  stations, the regeneration should be adjusted to the point **just before oscillation** (with the REGEN potentiometer slightly to the left of the oscillation point) for the best effect.
 
+  
+
+----
+© BH1PHL 2022~2023
